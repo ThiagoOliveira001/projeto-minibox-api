@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.0" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<database name="minibox">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="mercado" rect-visible="true" fill-color="#4d86e1">
+	<role name="postgres"/>
+</schema>
+
+<schema name="colaborador" rect-visible="true" fill-color="#dee114">
+	<role name="postgres"/>
+</schema>
+
+<table name="funcionario">
+	<schema name="colaborador"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Tabela de funcionarios]]></comment>
+	<position x="240" y="20"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+		<comment><![CDATA[Chave da tabela]]></comment>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="smallint" length="0"/>
+		<comment><![CDATA[Nome do funcionario]]></comment>
+	</column>
+	<column name="cep" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Cep do funcionario]]></comment>
+	</column>
+	<column name="logradouro" not-null="true">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Logradouro do funcionario]]></comment>
+	</column>
+	<column name="bairro" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[Bairro do funcionario]]></comment>
+	</column>
+	<column name="municipio" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[Cidade do funcionario]]></comment>
+	</column>
+	<column name="estado" not-null="true">
+		<type name="varchar" length="2"/>
+		<comment><![CDATA[Estado do funcionario]]></comment>
+	</column>
+	<column name="cpf" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[CPF do funcionario]]></comment>
+	</column>
+	<column name="dtnascimento" not-null="true">
+		<type name="date" length="0"/>
+		<comment><![CDATA[Data de nascimento do funcionario]]></comment>
+	</column>
+	<column name="telefone" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Telefone do funcionario]]></comment>
+	</column>
+	<column name="cargo" not-null="true">
+		<type name="varchar" length="30"/>
+		<comment><![CDATA[Cargo do funcionario]]></comment>
+	</column>
+	<column name="salario" not-null="true">
+		<type name="numeric" length="10" precision="2"/>
+		<comment><![CDATA[Salario do funcionario]]></comment>
+	</column>
+	<constraint name="funcionario_pk" type="pk-constr" table="colaborador.funcionario">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="uk_funcionario_cpf" type="uq-constr" table="colaborador.funcionario">
+		<columns names="cpf" ref-type="src-columns"/>
+		<comment><![CDATA[CPF unico]]></comment>
+	</constraint>
+</table>
+
+<table name="cliente">
+	<schema name="colaborador"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Tabela de clientes]]></comment>
+	<position x="855" y="26"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+		<comment><![CDATA[Chave da tabela]]></comment>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[Nome do cliente]]></comment>
+	</column>
+	<column name="cep" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Cep do cliente]]></comment>
+	</column>
+	<column name="logradouro" not-null="true">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Logradouro do cliente]]></comment>
+	</column>
+	<column name="bairro" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[Bairro do cliente]]></comment>
+	</column>
+	<column name="municipio" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[Municipio do cliente]]></comment>
+	</column>
+	<column name="estado" not-null="true">
+		<type name="varchar" length="2"/>
+		<comment><![CDATA[Estado do cliente]]></comment>
+	</column>
+	<column name="cpf" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[CPF do cliente]]></comment>
+	</column>
+	<column name="dtnascimento" not-null="true">
+		<type name="date" length="0"/>
+		<comment><![CDATA[Data de nascimento do cliente]]></comment>
+	</column>
+	<column name="telefone" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Telefone do cliente]]></comment>
+	</column>
+	<constraint name="cliente_pk" type="pk-constr" table="colaborador.cliente">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="uk_cliente_cpf" type="uq-constr" table="colaborador.cliente">
+		<columns names="cpf" ref-type="src-columns"/>
+		<comment><![CDATA[CPF unico]]></comment>
+	</constraint>
+</table>
+
+<table name="produto">
+	<schema name="mercado"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Tabela de produtos]]></comment>
+	<position x="233" y="673"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+		<comment><![CDATA[Chave da tabela]]></comment>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Nome do produto]]></comment>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[descricao do produto]]></comment>
+	</column>
+	<column name="preco" not-null="true">
+		<type name="numeric" length="10" precision="2"/>
+		<comment><![CDATA[Preco do produto]]></comment>
+	</column>
+	<column name="tipo" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[Tipo de produto]]></comment>
+	</column>
+	<constraint name="produto_pk" type="pk-constr" table="mercado.produto">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="uk_nome" type="uq-constr" table="mercado.produto">
+		<columns names="nome" ref-type="src-columns"/>
+		<comment><![CDATA[Nome unico]]></comment>
+	</constraint>
+</table>
+
+<table name="item">
+	<schema name="mercado"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Tabela de itens]]></comment>
+	<position x="481" y="430"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+		<comment><![CDATA[Chave da tabela]]></comment>
+	</column>
+	<column name="idproduto" not-null="true">
+		<type name="integer" length="0"/>
+		<comment><![CDATA[Chave estrangeira produto]]></comment>
+	</column>
+	<column name="idvenda" not-null="true">
+		<type name="integer" length="0"/>
+		<comment><![CDATA[Chave estrangeira para tabela venda]]></comment>
+	</column>
+	<column name="qtde" not-null="true">
+		<type name="integer" length="0"/>
+		<comment><![CDATA[Quantidade de itens]]></comment>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="numeric" length="10" precision="2"/>
+		<comment><![CDATA[Valor do item]]></comment>
+	</column>
+	<constraint name="item_pk" type="pk-constr" table="mercado.item">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="venda">
+	<schema name="mercado"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Tabela de vendas]]></comment>
+	<position x="920" y="439"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+		<comment><![CDATA[Chave da tabela]]></comment>
+	</column>
+	<column name="idcliente" not-null="true">
+		<type name="integer" length="0"/>
+		<comment><![CDATA[Chave estrangeira para cliente]]></comment>
+	</column>
+	<column name="idfuncionario" not-null="true">
+		<type name="integer" length="0"/>
+		<comment><![CDATA[Chave estrangeira para funcionario]]></comment>
+	</column>
+	<column name="data" not-null="true">
+		<type name="timestamp" length="0"/>
+		<comment><![CDATA[Data da venda]]></comment>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="numeric" length="10" precision="2"/>
+		<comment><![CDATA[Valor da venda]]></comment>
+	</column>
+	<constraint name="venda_pk" type="pk-constr" table="mercado.venda">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="fk_item_produto" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="mercado.produto" table="mercado.item">
+	<columns names="idproduto" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+		<comment><![CDATA[Chave estrangeira para produto]]></comment>
+</constraint>
+
+<constraint name="fk_item_venda" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="mercado.venda" table="mercado.item">
+	<columns names="idvenda" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+		<comment><![CDATA[Chave estrangeira para tabela venda]]></comment>
+</constraint>
+
+<constraint name="fk_venda_cliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="colaborador.cliente" table="mercado.venda">
+	<columns names="idcliente" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+		<comment><![CDATA[Chave estrangeira para cliente]]></comment>
+</constraint>
+
+<constraint name="fk_venda_funcionario" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="colaborador.funcionario" table="mercado.venda">
+	<columns names="idfuncionario" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_item_produto" type="relfk"
+	 src-table="mercado.item"
+	 dst-table="mercado.produto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_venda_cliente" type="relfk"
+	 src-table="mercado.venda"
+	 dst-table="colaborador.cliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_venda_funcionario" type="relfk"
+	 src-table="mercado.venda"
+	 dst-table="colaborador.funcionario"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_item_venda" type="relfk"
+	 src-table="mercado.item"
+	 dst-table="mercado.venda"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
